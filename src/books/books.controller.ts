@@ -7,12 +7,14 @@ import {
     NotFoundException,
     Param,
     Patch,
-    Post
+    Post,
+    UseGuards
 } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import type { Book } from './interfaces/book.interface';
+import { AuthGuard } from 'src/guards/auth/auth.guard';
 
 @Controller('books')
 export class BooksController {
@@ -24,6 +26,7 @@ export class BooksController {
   }
 
   @Get()
+  @UseGuards(AuthGuard)
   findAll(): Book[] {
     return this.booksService.findAll();
   }

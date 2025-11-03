@@ -8,4 +8,3 @@ export class MynameController {
         return `Hello ${name}`
     }
 }
-
